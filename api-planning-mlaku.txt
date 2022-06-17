@@ -1,0 +1,126 @@
+Standar API
+
+{root.api}/{version}/{grouping}/{endpoint}
+SAMPLE:
+https://mern-api.kabayancoding.com/v1/auth/login
+
+Standar Status response
+
+200 - OK --> Call API Success
+201 - CREATED --> Post Success
+400 - BAD REQUEST --> Error on Client Side (Bisa input yang salah dll).
+401 - UAUTHORIZED --> User not authorized to the request.
+403 - FORBIDDEN --> User not allowed to access.
+404 - NOT FOUND --> Request Endpoint Not Found.
+500 - INTERNAL SERVER ERROR --> Error on Serve Side
+502 - BAD GATEWAY --> Invalid Response From Another Request
+
+==================================================================================
+
+GROUP: Authentication
+
+[1] - Register
+{root.api}/{version}/auth/register
+
+req:
+{
+    "name": "Testing",
+    "username": "Testing",
+    "password": "123123"
+}
+
+res:
+{
+    "message": "Register Success",
+    "data": {
+        "id": 1,
+        "name": "Testing",
+        "username": "Testing",
+        "password": "123123"
+    }
+}
+
+err-response:
+201 -> Register Berhasil
+400 -> Input yang anda masukkan tidak valid.
+
+==================================================================================
+
+GROUP: Authentication
+
+[2] - Login
+{root.api}/{version}/auth/login
+
+req:
+{
+    "username": "Testing",
+    "password": "123123"
+}
+
+res:
+{
+    "message": "Login Success",
+    "data": {
+        "id": 1,
+        "name": "Testing",
+        "username": "Testing",
+        "password": "123123"
+    }
+}
+
+err-response:
+201 -> Login Berhasil
+400 -> Input yang anda masukkan tidak valid.
+
+==================================================================================
+
+GROUP: ObjectTourism
+
+[1] - Create ObjectTourism Post
+[POST]: {root.api}/{version}/object-tourism/post
+
+req:
+{
+    "dest_name": "ObjectTourism name",
+    "address": "ObjectTourism address",
+    "image": "imagefile.png",
+    "desc": "ObjectTourism description",
+    "open_time": "08.00 - 18.00",
+    "open_day": "Every Day",
+    "contact_number": "082345678910"
+}
+
+res:
+{
+    "message": "Create ObjectTourism Post Success",
+    "data": {
+        "post_id": 1,
+        "dest_name": "ObjectTourism name",
+        "address": "ObjectTourism address",
+        "image": "imagefile.png",
+        "desc": "ObjectTourism description",
+        "open_time": "08.00 - 18.00",
+        "open_day": "Every Day",
+        "contact_number": "082345678910"
+        "created_at": "12/06/2020",
+        "author": {
+            "uid": 1,
+            "name": "Testing"
+        }
+    }
+}
+
+err-response:
+201 -> ObjectTourism Post Berhasil Dibuat
+400 -> Input yang anda masukkan tidak valid.
+
+==================================================================================
+
+GROUP: ObjectTourism
+
+[2] - Get ObjectTourism Post
+[POST]: {root.api}/{version}/object-tourism/get
+
+
+[3] - Update ObjectTourism Post
+[4] - Delete ObjectTourism Post
