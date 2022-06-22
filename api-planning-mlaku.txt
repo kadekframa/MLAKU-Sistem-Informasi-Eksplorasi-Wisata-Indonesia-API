@@ -2,18 +2,18 @@ Standar API
 
 {root.api}/{version}/{grouping}/{endpoint}
 SAMPLE:
-https://mern-api.kabayancoding.com/v1/auth/login
+http://mern-api.kabayancoding.com/v1/auth/login
 
 Standar Status response
 
-200 - OK --> Call API Success
-201 - CREATED --> Post Success
-400 - BAD REQUEST --> Error on Client Side (Bisa input yang salah dll).
-401 - UAUTHORIZED --> User not authorized to the request.
-403 - FORBIDDEN --> User not allowed to access.
-404 - NOT FOUND --> Request Endpoint Not Found.
+200 - OK                    --> Call API Success
+201 - CREATED               --> Post Success
+400 - BAD REQUEST           --> Error on Client Side (Bisa input yang salah dll).
+401 - UAUTHORIZED           --> User not authorized to the request.
+403 - FORBIDDEN             --> User not allowed to access.
+404 - NOT FOUND             --> Request Endpoint Not Found.
 500 - INTERNAL SERVER ERROR --> Error on Serve Side
-502 - BAD GATEWAY --> Invalid Response From Another Request
+502 - BAD GATEWAY           --> Invalid Response From Another Request
 
 ==================================================================================
 
@@ -119,7 +119,7 @@ err-response:
 GROUP: ObjectTourism
 
 [2] - Get ObjectTourism Post
-[POST]: {root.api}/{version}/object-tourism/get
+[GET]: {root.api}/{version}/object-tourism/get
 
 
 [3] - Update ObjectTourism Post
