@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 
 
 app.use('/v1/object-tourism', objectTourismRoutes);
-// app.use('/v1/culinary', culinaryRoutes);
+app.use('/v1/culinary', culinaryRoutes);
 
 
 app.use((error, req, res, next) => {
