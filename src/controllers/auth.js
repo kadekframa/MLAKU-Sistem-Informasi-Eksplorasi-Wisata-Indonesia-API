@@ -11,12 +11,12 @@ dotenv.config();
 const register = async (req, res, next) => {
     try {
         const error = validationResult(req);
-        if (!error.isEmpty) {
-            return res.status(400).json({
-                status: res.statusCode,
-                message: 'Input yang anda masukkan tidak sesuai.',
-            })
-        }
+        if (!error.isEmpty()) {
+            const err = new Error('Input Value Tidak Sesuai');
+            err.errorStatus = 400;
+            err.data = errors.array();
+            throw err;
+        };
 
         const {
             fullname,
@@ -48,7 +48,7 @@ const register = async (req, res, next) => {
             .then((result) => {
                 res.status(201).json({
                     status: res.statusCode,
-                    message: 'User baru berhasil dibuat.',
+                    message: 'Akun baru berhasil dibuat.',
                     data: result,
                 });
             })
@@ -62,7 +62,7 @@ const register = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({
             status: res.statusCode,
-            message: 'Gagal membuat akun baru.'
+            message: 'Fullname/username minimal 5 karakter.'
         })
     }
 }
@@ -73,7 +73,7 @@ const login = async (req, res, next) => {
         if (!error.isEmpty) {
             return res.status(400).json({
                 status: res.statusCode,
-                message: 'Input yang anda masukkan tidak sesuai.',
+                message: 'Input tidak sesuai.',
             })
         }
 
@@ -98,7 +98,7 @@ const login = async (req, res, next) => {
                 if (!validPassword) {
                     return res.status(401).json({
                         status: res.statusCode,
-                        message: 'Password yang anda masukkan salah.'
+                        message: 'password anda salah.'
                     });
                 }
 
@@ -120,7 +120,7 @@ const login = async (req, res, next) => {
             });
     } catch (error) {
         return res.status(500).json({
-            message: 'Gagal login',
+            message: 'gagal login',
             error,
         });
     }
@@ -143,7 +143,7 @@ const getUser = async (req, res, next) => {
 
         if (!tokens) {
             return res.status(401).send({
-                message: 'Token anda tidak valid.'
+                message: 'token anda tidak valid.'
             });
         }
 
