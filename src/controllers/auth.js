@@ -62,7 +62,7 @@ const register = async (req, res, next) => {
     } catch (error) {
         return res.status(500).json({
             status: res.statusCode,
-            message: 'Fullname/username minimal 5 karakter.'
+            message: 'gagal login'
         })
     }
 }
