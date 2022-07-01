@@ -10,6 +10,7 @@ const PORT = 4000;
 const app = express();
 const objectTourismRoutes = require('./src/routes/object-tourism');
 const culinaryRoutes = require('./src/routes/culinary');
+const accomodationRoutes = require('./src/routes/accomodation')
 const authRoutes = require('./src/routes/auth');
 
 const fileStorage = multer.diskStorage({
@@ -49,6 +50,7 @@ app.use(express.json());
 
 app.use('/v1/object-tourism', objectTourismRoutes);
 app.use('/v1/culinary', culinaryRoutes);
+app.use('/v1/accomodation', accomodationRoutes);
 app.use('/v1/auth', authRoutes);
 
 app.use((error, req, res, next) => {
