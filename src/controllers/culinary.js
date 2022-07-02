@@ -26,6 +26,8 @@ exports.createCulinary = (req, res, next) => {
     const open_time = req.body.open_time;
     const open_day = req.body.open_day;
     const contact_number = req.body.contact_number;
+    const user_id = req.body.user_id;
+    const user_name = req.body.user_name;
 
     const Posting = new Culinary({
         culinary_name: culinary_name,
@@ -35,7 +37,10 @@ exports.createCulinary = (req, res, next) => {
         open_time: open_time,
         open_day: open_day,
         contact_number: contact_number,
-        author: {uid: 1, name: 'Kadek Frama'}
+        author: {
+            user_id: user_id,
+            name: user_name
+        }
     });
 
     Posting.save()

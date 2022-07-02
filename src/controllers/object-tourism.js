@@ -26,6 +26,8 @@ exports.createObjectTourism = (req, res, next) => {
     const open_time = req.body.open_time;
     const open_day = req.body.open_day;
     const contact_number = req.body.contact_number;
+    const user_id = req.body.user_id;
+    const user_name = req.body.user_name;
 
     const Posting = new ObjectTourism({
         dest_name: dest_name,
@@ -35,13 +37,16 @@ exports.createObjectTourism = (req, res, next) => {
         open_time: open_time,
         open_day: open_day,
         contact_number: contact_number,
-        author: {uid: 1, name: 'Kadek Frama'}
+        author: {
+            user_id: user_id,
+            name: user_name
+        }
     });
 
     Posting.save()
         .then(result => {
             res.status(201).json({
-                message: "Create Object Tourism Success",
+                message: "Input Object Tourism Information Success",
                 data: result
             });
         })
@@ -112,7 +117,7 @@ exports.updateObjectTourism = (req, res, next) => {
     ObjectTourism.findById(postId)
         .then(post => {
             if(!post) {
-                const err = new Error('Object Tourism tidak ditemukan');
+                const err = new Error('Object Tourism Not Found');
                 err.errorStatus = 404;
                 throw err;
             }
@@ -129,7 +134,7 @@ exports.updateObjectTourism = (req, res, next) => {
         })
         .then(result => {
             res.status(200).json({
-                message: 'Update Sukses..',
+                message: 'Update Object Tourism Information Success',
                 data: result,
             })
         })
@@ -145,7 +150,7 @@ exports.deleteObjectTourism = (req, res, next) => {
     ObjectTourism.findById(postId)
         .then(post => {
             if(!post){
-                const error = new Error('Object Tourism Tidak Ditemukan');
+                const error = new Error('Object Tourism Not Found');
                 error.errorStatus = 404;
                 throw error;
             }
@@ -155,7 +160,7 @@ exports.deleteObjectTourism = (req, res, next) => {
         })
         .then(result => {
             res.status(200).json({
-                message: 'Hapus Object Tourism Berhasil',
+                message: 'Delete Object Tourism Success',
                 data: result,
             })
         })

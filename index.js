@@ -5,8 +5,11 @@ const multer = require('multer');
 const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const PORT = 4000;
+const dotenv = require('dotenv');
 
+dotenv.config();
+
+const port = process.env.PORT || 4000;
 const app = express();
 const objectTourismRoutes = require('./src/routes/object-tourism');
 const culinaryRoutes = require('./src/routes/culinary');
@@ -66,6 +69,6 @@ app.use((error, req, res, next) => {
 
 mongoose.connect('mongodb+srv://kadekframa:hYoAvgM5huMk2cSk@api-mlaku.yvrjb.mongodb.net/mlaku?retryWrites=true&w=majority')
     .then(() => {
-        app.listen(PORT, () => console.info(`Server running on port: ${PORT}`));
+        app.listen(port, () => console.info(`Server running on port: ${port}`));
     })
     .catch(err => console.info(err));
